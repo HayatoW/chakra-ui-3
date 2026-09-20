@@ -1,15 +1,15 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { Provider } from "@/components/ui/provider";
 
+/**
+ * A custom `Document` can update the `<html>` and `<body>` tags used to render a Page.
+ */
 export default function Document() {
   return (
     <Html lang="en" suppressHydrationWarning>
       <Head />
       <body>
-        <Provider>
-          <Main />
-          <NextScript />
-        </Provider>
+        <Main />
+        <NextScript />
       </body>
     </Html>
   );
