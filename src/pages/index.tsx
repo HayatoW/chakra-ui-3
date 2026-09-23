@@ -1,26 +1,6 @@
+import { Heading, Stack, Text } from "@chakra-ui/react";
 import Head from "next/head";
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { Button, HStack } from "@chakra-ui/react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const Demo = () => {
-  return (
-    <HStack>
-      <Button>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
-  );
-};
+import { AppShell } from "@/components/AppShell";
 
 export default function Home() {
   return (
@@ -31,13 +11,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
-      >
-        <main className={styles.main}>
-          <Demo />
-        </main>
-      </div>
+      <AppShell>
+        <Stack gap="4">
+          <Heading as="h2" size="xl">
+            Main
+          </Heading>
+          {Array.from({ length: 40 }, (_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static demo content
+            <Text key={i}>スクロール確認用のダミーテキスト {i + 1}</Text>
+          ))}
+        </Stack>
+      </AppShell>
     </>
   );
 }
